@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Fitness App</title>
+
+<link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous">
+<style>
+  /* Set a background color */
+body {
+    background-color: #D3DEDC;
+  }
+  
+  /* Customize the navigation bar */
+  .navbar {
+    background-color: #333;
+    border: none;
+  }
+  .navbar-brand {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Style the login form */
+  form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+  }
+  form h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 0;
+  }
+  form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+  }
+  form input {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  form input:focus {
+    border-color: #333;
+  }
+  form .alert-danger {
+    background-color: #f2dede;
+    color: #a94442;
+    border-color: #ebccd1;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  form .alert-info {
+    background-color: #d9edf7;
+    color: #31708f;
+    border-color: #bce8f1;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Customize the login button */
+  form input[type="submit"] {
+    background-color: #333;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+  form input[type="submit"]:hover {
+    background-color: #555;
+    cursor: pointer;
+  }
+  
+  /* Add responsive design */
+  @media only screen and (max-width: 768px) {
+    form {
+      margin: 10px;
+      padding: 10px;
+    }
+    form h1 {
+      font-size: 24px;
+    }
+  }
+
+ 
+  </style>
+</head>
+<body>
+
+  <!-- create navigation bar ( header) -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed"
+          data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+          aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span> <span
+            class="icon-bar"></span> <span class="icon-bar"></span> <span
+            class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#" th:href="@{/}">Fitness App</a>
+      </div>
+    </div>
+  </nav>
+  
+  <br>
+  <br>
+  <div class = "container">
+    <div class = "row">
+      <div class = "col-md-6 col-md-offset-3">
+        
+        <h1> User Login Page </h1>
+        <form th:action="@{/login}" method="post">
+          
+          <!-- error message -->
+          <div th:if="${param.error}">
+            <div class="alert alert-danger">Invalid username or
+              password.</div>
+          </div>
+        
+          <!-- logout message -->
+          <div th:if="${param.logout}">
+            <div class="alert alert-info">You have been logged out.</div>
+          </div>
+          
+          <div class = "form-group">
+            <label for ="username"> Username </label> :
+            <input type="text" class = "form-control" id ="username" name = "username"
+            placeholder="Enter Email ID" autofocus="autofocus">
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>: <input type="password"
+              id="password" name="password" class="form-control"
+              placeholder="Enter Password" />
+          </div>
+          
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <input type="submit" name="login-submit" id="login-submit"
+                  class="form-control btn btn-primary" value="Log In" />
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="form-group">
+            <span>New user? <a href="/" th:href="@{/registration}">Register
+                now</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

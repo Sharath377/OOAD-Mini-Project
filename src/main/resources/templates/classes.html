@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Classes</title>
+<style>
+  /* Set background color */
+body {
+  background-color: #D3DEDC;
+}
+
+/* Style the table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Set table header styles */
+.table thead th {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: left;
+  font-size: 18px;
+}
+
+/* Set table cell styles */
+.table tbody td {
+  background-color: #ccc;
+  color: #333;
+  padding: 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Set alternate row styles */
+.table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Set link styles */
+a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #ff8c00;
+}
+
+</style>
+</head>
+<body>
+<h2>Classes</h2>
+
+<div class="col-sm-5" align = "center">
+                 <div class="panel-body" align = "center" >
+                 <table class="table" id="table">
+  <thead class="thead-dark">
+
+  
+    <tr>
+        
+          <th>Class Name</th>
+            <th class="text-right">Class Type</th>
+            
+            <th> Description</th>
+            <th>Trainer</th>
+            <th>Time</th>
+            <th>Book Classes</th>
+            
+            
+    </tr>
+    
+    </thead>
+    
+    <tbody>
+     <tr  th:each="ClassData : ${listclasses}">
+    <td  th:text="${ClassData.className}">Class Name</td>
+    <td class="text-right"  th:text="${ClassData.classType}">Class Type</td>
+    <td class="text-right" th:text="${ClassData.Description}">Description</td>
+    <td class="text-right" th:text="${ClassData.Trainer}">Trainer</td>
+    <td class="text-right" th:text="${ClassData.time}">Timings</td>
+    
+    <td>
+			<a th:href="@{'/book/' + ${ClassData.id}}">Book</a>
+		</td>	
+</tbody>
+</table>
+
+<a href="/viewbookings" th:href="@{viewbookings}"> View Booked Classes </a>
+
+</body>
+</html>

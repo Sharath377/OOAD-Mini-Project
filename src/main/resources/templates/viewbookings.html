@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bookings</title>
+<style>
+  /* Style for the table */
+body{
+  background-color:#D3DEDC;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #ccc;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Style for the headings */
+h2 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Style for the container */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Style for the boxes */
+.box {
+  border: 1px solid #000000;
+  box-shadow: 2px 2px 6px #000000;
+  margin: 20px;
+  padding: 20px;
+  width: 400px;
+}
+
+/* Style for the buttons */
+a {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+a:hover {
+  background-color: #3e8e41;
+}
+
+</style>
+</head>
+<body>
+<h2>Bookings</h2>
+
+<div class="col-sm-5" align = "center">
+                 <div class="panel-body" align = "center" >
+                 <table class="table" id="table">
+  <thead class="thead-dark">
+    <tr>
+        
+          <th>Class Name</th>
+            <th class="text-right">Class Type</th>
+            
+            
+            <th>Trainer</th>
+            <th>Timings</th>
+            
+            
+    </tr>
+    </thead>
+    
+    <tbody>
+     <tr  th:each="Bookings : ${listbookings}">
+    <td  th:text="${Bookings.className}">Class Name</td>
+    <td class="text-right"  th:text="${Bookings.classType}">Class Type</td>
+    
+    <td class="text-right" th:text="${Bookings.Trainer}">Trainer</td>
+    <td class="text-right" th:text="${Bookings.time}">Timings</td>
+  	<td>
+			<a th:href="@{'/cancel/' + ${Bookings.id}}">Cancel Bookings</a>
+		</td>
+</tbody>
+</table>
+
+
+
+</body>
+</html>
